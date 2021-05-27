@@ -5,5 +5,5 @@ Feature: Login Func
     Given navigate to fussmattenprofi
     Then open login page
     When enter email and password and click button
-    | username | password |
+    | test202127 | test202127test |
     Then user should login succesfully
