@@ -103,15 +103,37 @@ public class shopSteps {
     public void userSelectQuantityOfItemPriseShouldBeCorrect() {
         Locators lc=new Locators(driver);
 
+        // Sleep koymazsak site fiyatları güncellemekte yavaş kalıyor.
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         String urunAdetStr= lc.anzahl.getAttribute("value");
         int urunAdet = Integer.parseInt(urunAdetStr);
 
-        int toplamSite1= Integer.parseInt(lc.Gesamtsumme.getText());
-        int toplamSite2= Integer.parseInt(lc.zwischensumme.getText());
+        System.out.println("Ürün Sayısı : " + urunAdet);
+
+        String str1top = lc.Gesamtsumme.getText().substring(0,(lc.Gesamtsumme.getText().length()-4))+ "." +
+                lc.Gesamtsumme.getText().substring((lc.Gesamtsumme.getText().length()-3),(lc.Gesamtsumme.getText().length()-1));
+        double toplamSite1 = Double.parseDouble(str1top);
+
+        String str2top = lc.zwischensumme.getText().substring(0,(lc.zwischensumme.getText().length()-4))+ "." +
+                lc.zwischensumme.getText().substring((lc.zwischensumme.getText().length()-3),(lc.zwischensumme.getText().length()-1));
+        double toplamSite2= Double.parseDouble(str2top);
+
+
+        System.out.println("Sitede Gözüken Fiyat 1. Blogu: " + toplamSite1);
+        System.out.println("Sitede Gözüken Fiyat 2. Blogu: " + toplamSite2);
 
         Assert.assertTrue(toplamSite1==toplamSite2);
 
-        int olmasiGerekenFiyat = urunAdet * Integer.parseInt(lc.preis.getText());
+        String strPries = lc.preis.getText().substring(0,(lc.preis.getText().length()-4))+ "." +
+                lc.preis.getText().substring((lc.preis.getText().length()-3),(lc.preis.getText().length()-1));
+
+        double olmasiGerekenFiyat = Double.parseDouble(strPries) * urunAdet;
+
+        System.out.println("Olması gereken hesaplanmış Fİyat : " + olmasiGerekenFiyat);
 
         Assert.assertTrue(olmasiGerekenFiyat==toplamSite1);
 
