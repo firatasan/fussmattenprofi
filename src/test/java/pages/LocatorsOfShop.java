@@ -1,4 +1,4 @@
-package utils;
+package pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,9 +10,9 @@ import pages._Parent;
 
 import java.util.List;
 
-public class Locators extends _Parent{
+public class LocatorsOfShop extends _Parent{
 
-    public Locators (WebDriver driver){ PageFactory.initElements(driver, this); }
+    public LocatorsOfShop(WebDriver driver){ PageFactory.initElements(driver, this); }
 
     WebElement myElement;
     String secilenEleman;
