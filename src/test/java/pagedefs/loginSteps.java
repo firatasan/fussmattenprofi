@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 public class loginSteps {
 
     WebDriver driver;
-
+    LocatorsOfShop lc=new LocatorsOfShop();
 
 
     @Given("^navigate to fussmattenprofi$")
@@ -30,7 +30,7 @@ public class loginSteps {
 
     @Then("^open login page$")
     public void open_login_page() {
-        LocatorsOfShop lc=new LocatorsOfShop(driver);
+
         //lc.cookiesAccept.click();
         //lc.loginPage.click();
         lc.findElementAndClick("cookiesAccept");
@@ -40,7 +40,7 @@ public class loginSteps {
 
     @When("enter email and password and click button")
     public void enterEmailAndPasswordAndClickButton(DataTable dataTable) {
-        LocatorsOfShop lc=new LocatorsOfShop(driver);
+
         lc.findElementAndSendKeys("username", dataTable.asList().get(0));
         lc.findElementAndSendKeys("password", dataTable.asList().get(1));
         lc.findElementAndClick("loginButton");
@@ -48,7 +48,7 @@ public class loginSteps {
 
     @Then("^user should login succesfully$")
     public void user_should_login_succesfully()  {
-        LocatorsOfShop lc=new LocatorsOfShop(driver);
+
         lc.findElementAndVerifyText("meinKonto","Mein Konto");
 
     }

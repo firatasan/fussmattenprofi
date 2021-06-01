@@ -12,7 +12,7 @@ import java.util.List;
 
 public class LocatorsOfShop extends _Parent{
 
-    public LocatorsOfShop(WebDriver driver){ PageFactory.initElements(driver, this); }
+    public LocatorsOfShop(){ PageFactory.initElements(driver, this); }
 
     WebElement myElement;
     String secilenEleman;

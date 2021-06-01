@@ -13,6 +13,8 @@ import java.util.concurrent.TimeUnit;
 public class shopSteps {
 
     WebDriver driver;
+    LocatorsOfShop lc=new LocatorsOfShop();
+
 
     @Given("navigate to shop")
     public void navigateToShop() {
@@ -26,7 +28,7 @@ public class shopSteps {
         driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
 
 
-        LocatorsOfShop lc=new LocatorsOfShop(driver);
+
         lc.findElementAndClick("fussmatten");
 
 
@@ -34,7 +36,7 @@ public class shopSteps {
 
     @When("select random trademark from all")
     public void selectRandomTrademarkFromAll() {
-        LocatorsOfShop lc=new LocatorsOfShop(driver);
+
 
         lc.findAllElementsAndClickRandomly(lc.tradeMarks);
 
@@ -43,7 +45,7 @@ public class shopSteps {
     @Then("all products should be come from same trademark")
     public void allProductsShouldBeComeFromSameTrademark() {
 
-        LocatorsOfShop lc=new LocatorsOfShop(driver);
+
         lc.verifyListElementsWithName(lc.productsList);
 
 
@@ -52,7 +54,7 @@ public class shopSteps {
     @When("select a product from a trademark")
     public void selectAProductFromATrademark() {
 
-        LocatorsOfShop lc=new LocatorsOfShop(driver);
+
         lc.findAllElementsAndClickRandomly(lc.inDenWarenkorpButtons);
 
     }
@@ -60,7 +62,7 @@ public class shopSteps {
 
     @Then("product should be added succesfully")
     public void productShouldBeAddedSuccesfully() {
-        LocatorsOfShop lc=new LocatorsOfShop(driver);
+
         Assert.assertTrue(lc.successMessage.isDisplayed());
 
     }
@@ -72,13 +74,13 @@ public class shopSteps {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
 
-        LocatorsOfShop lc=new LocatorsOfShop(driver);
+
         lc.findElementAndClick("chartIcon");
     }
 
     @Then("user can change quantity of item")
     public void userCanChangeQuantityOfItem() {
-        LocatorsOfShop lc=new LocatorsOfShop(driver);
+
 
         String urunAdetStr= lc.anzahl.getAttribute("value");
         int urunAdet = Integer.parseInt(urunAdetStr);
@@ -101,7 +103,7 @@ public class shopSteps {
 
     @When("user select quantity of item prise should be correct")
     public void userSelectQuantityOfItemPriseShouldBeCorrect() {
-        LocatorsOfShop lc=new LocatorsOfShop(driver);
+
 
         // Sleep koymazsak site fiyatları güncellemekte yavaş kalıyor.
         try {
