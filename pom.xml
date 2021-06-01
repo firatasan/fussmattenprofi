@@ -46,6 +46,12 @@
             <version>6.10.4</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.codeborne</groupId>
+            <artifactId>selenide</artifactId>
+            <version>5.18.0</version>
+        </dependency>
+
 
     </dependencies>
 
