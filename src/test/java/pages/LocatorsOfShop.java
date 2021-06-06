@@ -44,6 +44,8 @@ public class LocatorsOfShop extends _Parent{
     @FindBy (xpath = "//td[@class='product-subtotal']//bdi") public WebElement Gesamtsumme;
     @FindBy (xpath = "//tr[@class='cart-subtotal']//bdi") public WebElement zwischensumme;
     @FindBy (name = "update_cart") public WebElement warenkorbAktualisieren;
+    @FindBy (xpath = "//span[text()='Modell']") public WebElement modell;
+    @FindBy (xpath = "//*[@class='chosen-results']//li") public List<WebElement> modelFilterElements;
 
 
     // Footer Elements
@@ -58,6 +60,7 @@ public class LocatorsOfShop extends _Parent{
             case "fussmatten": myElement=fussmatten; break;
             case "chartIcon": myElement=chartIcon; break;
             case "warenkorbAktualisieren": myElement=warenkorbAktualisieren; break;
+            case "modell": myElement=modell; break;
         }
 
         clickFunction(myElement);
@@ -100,6 +103,18 @@ public class LocatorsOfShop extends _Parent{
 
         //System.out.println("Rastgele sayi = " + randomSayi);
         //System.out.println("rastgele gelen Eleman = " + randomSayi + ".eleman " + liste.get(randomSayi).getAttribute("alt"));
+
+        // Not aşağıdaki kodu yazdık çünkü stokdışı ürün olursa test duruyordu.
+        if (listeSize==1 && liste.get(randomSayi).getText()=="Weiterlesen") {
+            System.out.println("Lütfen testi tekrarlayınız");
+        }
+
+        if (liste.get(randomSayi).getText()=="Weiterlesen"){
+            System.out.println("Stok dışı ürün olduğu için bir diğer ürün seçildi");
+            if (randomSayi+1<=listeSize) randomSayi++;
+            else randomSayi--;
+        }
+
 
         secilenEleman = liste.get(randomSayi).getAttribute("alt");
 

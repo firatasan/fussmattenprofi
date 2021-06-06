@@ -4,6 +4,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import utils.Driver;
 import pages.LocatorsOfShop;
@@ -139,5 +140,25 @@ public class shopSteps {
 
         Assert.assertTrue(olmasiGerekenFiyat==toplamSite1);
 
+    }
+
+    @When("select a random product name from ModelFilter")
+    public void selectARandomProductNameFromModelFilter() {
+
+        lc.findElementAndClick("modell");
+        String filterlanacakEleman;
+        WebElement secimEleman;
+
+        int elemanSayimiz = lc.modelFilterElements.size();
+        int randomSayi = ((int) (Math.random()*(elemanSayimiz-1))+1);
+        filterlanacakEleman = lc.modelFilterElements.get(randomSayi).getText();
+        secimEleman = lc.modelFilterElements.get(randomSayi);
+        System.out.println(filterlanacakEleman);
+        secimEleman.click();
+
+    }
+
+    @Then("products should be came from same selected category")
+    public void productsShouldBeCameFromSameSelectedCategory() {
     }
 }
